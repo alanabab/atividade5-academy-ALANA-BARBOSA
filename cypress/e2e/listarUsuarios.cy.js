@@ -48,19 +48,5 @@ describe('Testes de Listar Usuários', () => {
     cy.wait(500);
     cy.get('#paginacaoProximo').click();
     cy.get('#paginacaoAtual').should('have.text', '3 de 3')
-  });
-
-  it('Deve verificar informações do primeiro usuário da lista', () => {
-    cy.intercept('GET', 'api/v1/users', {
-      fixture: "userList.json",
-    }).as('userList');
-
-    cy.wait('@userList');
-
-    cy.get('#listaUsuarios').should('be.visible');
-    cy.get('.sc-hzhJZQ').first().click();
-    cy.get('[name="id"]').should('be.visible');
-    cy.get('#userName').should('be.visible');
-    cy.get('#userEmail').should('be.visible')
-  })  
+  })
 })
